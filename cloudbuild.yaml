@@ -3,10 +3,17 @@ options:
 
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/vibrant-keyword-460710-a5/url-shortener', '.']
+    args: [
+      'build',
+      '-t', 'us-central1-docker.pkg.dev/vibrant-keyword-460710-a5/url-shortener-repo/url-shortener',
+      '.'
+    ]
 
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/vibrant-keyword-460710-a5/url-shortener']
+    args: [
+      'push',
+      'us-central1-docker.pkg.dev/vibrant-keyword-460710-a5/url-shortener-repo/url-shortener'
+    ]
 
 images:
-  - 'gcr.io/vibrant-keyword-460710-a5/url-shortener'
+  - 'us-central1-docker.pkg.dev/vibrant-keyword-460710-a5/url-shortener-repo/url-shortener'
