@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: url-shortener
-        image: gcr.io/YOUR_PROJECT_ID/url-shortener
+        image: gcr.io/vibrant-keyword-460710-a5/url-shortener
         ports:
         - containerPort: 8080
