@@ -29,7 +29,7 @@ This project demonstrates a complete DevOps workflow on Google Cloud Platform (G
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 ```bash
 url-shortener/
 ├── main.py # FastAPI application logic
@@ -40,9 +40,9 @@ url-shortener/
 └── service.yaml # Kubernetes service (LoadBalancer)
 
 
-## 🚀 Getting Started
+##  Getting Started
 
-### ✅ Prerequisites
+###  Prerequisites
 
 Ensure the following tools are installed and configured:
 
@@ -60,17 +60,17 @@ Ensure the following tools are installed and configured:
 
 gcloud config set project vibrant-keyword-460710-a5
 gcloud config set compute/zone us-central1-a
-2. Enable Required APIs
+### 2. Enable Required APIs
 gcloud services enable \
   container.googleapis.com \
   artifactregistry.googleapis.com \
   cloudbuild.googleapis.com
-3. Create Artifact Registry (if not exists)
+### 3. Create Artifact Registry (if not exists)
 gcloud artifacts repositories create url-shortener-repo \
   --repository-format=docker \
   --location=us-central1 \
   --description="Docker repo for URL Shortener"
-🛠️ Build and Push with Cloud Build
+### 🛠️ Build and Push with Cloud Build
 cloudbuild.yaml
 steps:
   - name: 'gcr.io/cloud-builders/docker'
@@ -84,21 +84,22 @@ images:
 options:
   logging: CLOUD_LOGGING_ONLY
 Submit Build
-gcloud builds submit --config cloudbuild.yaml .
+ gcloud builds submit --config cloudbuild.yaml .
+
 ☸️ Deploy to GKE
-1. Create a Kubernetes Cluster
+### 1. Create a Kubernetes Cluster
 gcloud container clusters create url-shortener-cluster \
   --num-nodes=1 \
   --enable-ip-alias
-2. Authenticate kubectl with Cluster
+### 2. Authenticate kubectl with Cluster
 gcloud container clusters get-credentials url-shortener-cluster
-3. Deploy Application
+### 3. Deploy Application
 kubectl apply -f deployment.yaml
 kubectl apply -f service.yaml
-4. Get External IP
+### 4. Get External IP
 kubectl get service url-shortener-service
 Visit http://<EXTERNAL-IP> in your browser once the LoadBalancer is provisioned.
-🧪 API Usage
+### 🧪 API Usage
 Shorten a URL
 http
 POST /shorten
@@ -109,13 +110,13 @@ Content-Type: application/json
 Redirect
 http
 GET /<short_code>
-🧹 Cleanup Resources
+### 🧹 Cleanup Resources
 gcloud container clusters delete url-shortener-cluster
 Optionally delete the Artifact Registry repo:
 gcloud artifacts repositories delete url-shortener-repo --location=us-central1
-📜 License
+### 📜 License
 Licensed under the MIT License.
-👤 Author
+### 👤 Author
 Developed by Alok Sharma
 Email: alok2910472@gmail.com
 ---
