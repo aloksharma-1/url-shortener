@@ -30,7 +30,7 @@ This project demonstrates a complete DevOps workflow on Google Cloud Platform (G
 ---
 
 ## 📁 Project Structure
-
+```bash
 url-shortener/
 ├── main.py # FastAPI application logic
 ├── requirements.txt # Python dependencies
@@ -98,7 +98,7 @@ kubectl apply -f service.yaml
 4. Get External IP
 kubectl get service url-shortener-service
 Visit http://<EXTERNAL-IP> in your browser once the LoadBalancer is provisioned.
-🧪 Example API Usage
+🧪 API Usage
 Shorten a URL
 http
 POST /shorten
