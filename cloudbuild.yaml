@@ -1,24 +1,25 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/27358/url-shortener', '.']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/url-shortener-repo/url-shortener', '.']
 
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/27358/url-shortener']
+    args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/url-shortener-repo/url-shortener']
 
   - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
     args:
-      - 'container'
-      - 'clusters'
-      - 'get-credentials'
-      - 'gke-cluster'
-      - '--region'
-      - 'us-central1'
+      - '-c'
+      - |
+        gcloud container clusters get-credentials gke-cluster --region us-central1 --project $PROJECT_ID
+        kubectl apply -f k8s/deployment.yaml
 
-  - name: 'gcr.io/cloud-builders/kubectl'
-    args: ['apply', '-f', 'k8s/deployment.yaml']
-
-  - name: 'gcr.io/cloud-builders/kubectl'
-    args: ['apply', '-f', 'k8s/service.yaml']
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        gcloud container clusters get-credentials gke-cluster --region us-central1 --project $PROJECT_ID
+        kubectl apply -f k8s/service.yaml
 
 images:
-  - 'gcr.io/27358/url-shortener'
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/url-shortener-repo/url-shortener'

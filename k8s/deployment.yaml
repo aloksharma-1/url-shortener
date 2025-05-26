@@ -15,6 +15,6 @@ spec:
       serviceAccountName: url-shortener-ksa
       containers:
       - name: url-shortener
-        image: gcr.io/27358/url-shortener
+        image: us-central1-docker.pkg.dev/vibrant-keyword-460710-a5/url-shortener-repo/url-shortener
         ports:
         - containerPort: 8080
