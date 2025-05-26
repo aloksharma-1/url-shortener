@@ -122,5 +122,5 @@ Email: alok2910472@gmail.com
 ---
 
 ### ✅ Suggestions:
-- Rename `url-shortener-repo`, `vibrant-keyword-460710-a5`, and links as needed for your own project.
-- You can add a `LICENSE` and `.gitignore` file to complete the professional setup.
+-- Rename `url-shortener-repo`, `vibrant-keyword-460710-a5`, and links as needed for your own project.
+-- You can add a `LICENSE` and `.gitignore` file to complete the professional setup.
