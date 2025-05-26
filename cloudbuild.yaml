@@ -1,6 +1,5 @@
 options:
   logging: CLOUD_LOGGING_ONLY
-
 steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/vibrant-keyword-460710-a5/url-shortener', '.']
@@ -10,4 +9,3 @@ steps:
 
 images:
   - 'gcr.io/vibrant-keyword-460710-a5/url-shortener'
-'
